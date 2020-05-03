@@ -18,12 +18,12 @@ testing_spike_trains = np.transpose(np.genfromtxt("Testing_SpikeTrains.txt"))
 training_angle_array = np.where((raw_training_angle_array < 90.0) & (raw_training_angle_array >= 0.0), 1, raw_training_angle_array)
 training_angle_array = np.where((raw_training_angle_array < 180.0) & (raw_training_angle_array >= 90.0), 2, training_angle_array)
 training_angle_array = np.where((raw_training_angle_array < 270.0) & (raw_training_angle_array >= 180.0), 3, training_angle_array)
-training_angle_array = np.where((raw_training_angle_array <= 360.0) & (raw_training_angle_array >= 270.0), 4, training_angle_array)
+training_angle_array = np.where((raw_training_angle_array < 360.0) & (raw_training_angle_array >= 270.0), 4, training_angle_array)
 
 testing_angle_array = np.where((raw_testing_angle_array < 90.0) & (raw_testing_angle_array >= 0.0), 1, raw_testing_angle_array)
 testing_angle_array = np.where((raw_testing_angle_array < 180.0) & (raw_testing_angle_array >= 90.0), 2, testing_angle_array)
 testing_angle_array = np.where((raw_testing_angle_array < 270.0) & (raw_testing_angle_array >= 180.0), 3, testing_angle_array)
-testing_angle_array = np.where((raw_testing_angle_array <= 360.0) & (raw_testing_angle_array >= 270.0), 4, testing_angle_array)
+testing_angle_array = np.where((raw_testing_angle_array < 360.0) & (raw_testing_angle_array >= 270.0), 4, testing_angle_array)
 
 knn_scores = []
 different_k_values = np.arange(1, 301)
