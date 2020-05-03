@@ -28,7 +28,8 @@ testing_angle_array = np.where((raw_testing_angle_array < 360.0) & (raw_testing_
 knn_scores = []
 different_k_values = np.arange(1, 301)
 
-for k in range(1, 301) :
+for k in different_k_values:
+    print("Training as %s classes" % k)
     spikes_classifier = KNN(n_neighbors=k)
     spikes_classifier.fit(training_spike_trains, training_angle_array)
     current_score = 100 * spikes_classifier.score(testing_spike_trains, testing_angle_array)
@@ -38,7 +39,6 @@ for k in range(1, 301) :
 plt.figure(1)
 plt.plot(different_k_values, knn_scores)
 plt.title("KNN Acurracies")
-
 plt.savefig("KNN Accuracies.png", progressive=True)
 
 
